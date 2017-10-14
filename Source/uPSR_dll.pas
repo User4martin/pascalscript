@@ -19,7 +19,7 @@ uses
   {$IFDEF UNIX}
   Unix, baseunix, dynlibs, termio, sockets;
   {$ELSE}
-  {$IFDEF KYLIX}SysUtils;{$ELSE}Windows;{$ENDIF}
+  Windows;
   {$ENDIF}
 
 {
@@ -109,13 +109,6 @@ begin
       end;
 
       {$IFDEF UNIX}
-      {$DEFINE UNIX_OR_KYLIX}
-      {$ENDIF}
-      {$IFDEF KYLIX}
-      {$DEFINE UNIX_OR_KYLIX}
-      {$ENDIF}
-
-      {$IFDEF UNIX_OR_KYLIX}
       dllhandle := LoadLibrary(PChar(s2));
       {$ELSE}
       {$IFDEF UNICODE}
