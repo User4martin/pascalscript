@@ -1211,9 +1211,10 @@ type
 
     property AttributesCloseTokenID: TPSPasToken read FAttributesCloseTokenID write FAttributesCloseTokenID;
 
+    {$PUSH}
     {$WARNINGS OFF}
     property UnitName: tbtString read FUnitName;
-    {$WARNINGS ON}
+    {$POP}
   end;
   TIFPSPascalCompiler = TPSPascalCompiler;
 
@@ -5329,7 +5330,7 @@ begin
           not FType.Attributes[i].FAttribType.OnApplyAttributeToType(Self, FType, FType.Attributes[i]) then begin
         Attr.Free;
         Exit;
-      end;
+    end;
     end;
     Attr.Free;
     if FParser.CurrTokenID <> CSTI_Semicolon then
